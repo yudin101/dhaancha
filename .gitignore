@@ -1,0 +1,14 @@
+node_modules/
+
+*.log
+logs/
+
+dist/
+coverage/
+
+.env
+.env.*
+!.env.example
+
+.DS_Store
+*.swp

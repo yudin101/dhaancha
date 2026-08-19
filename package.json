@@ -1,0 +1,59 @@
+{
+  "name": "dhaancha",
+  "version": "1.0.0",
+  "description": "A template to build upon",
+  "keywords": [
+    "express",
+    "template"
+  ],
+  "homepage": "https://github.com/yudin101/dhaancha#readme",
+  "bugs": {
+    "url": "https://github.com/yudin101/dhaancha/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yudin101/dhaancha.git"
+  },
+  "license": "MIT",
+  "author": "yudin101",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "db:push": "drizzle-kit push --config ./src/config/drizzle.config.ts",
+    "db:generate": "drizzle-kit generate --config ./src/config/drizzle.config.ts",
+    "db:migrate": "drizzle-kit migrate --config ./src/config/drizzle.config.ts",
+    "db:studio": "drizzle-kit studio --config ./src/config/drizzle.config.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "tsx --watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.2",
+    "pg": "^8.23.0",
+    "swagger-ui-express": "^5.0.1",
+    "winston": "^3.19.0",
+    "zod": "^4.4.3",
+    "zod-openapi": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.2.0",
+    "@types/pg": "^8.23.1",
+    "@types/supertest": "^7.2.1",
+    "@types/swagger-ui-express": "^4.1.8",
+    "drizzle-kit": "^0.31.10",
+    "supertest": "^7.2.2",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11"
+  }
+}
