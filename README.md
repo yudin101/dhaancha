@@ -28,23 +28,23 @@ tests/               # vitest test suite
 ## Getting Started
 1. **Use this template** on GitHub, or clone directly:
 ```bash
-    git clone https://github.com/yudin101/dhaancha.git
-    cd dhaancha
+git clone https://github.com/yudin101/dhaancha.git
+cd dhaancha
 ```
 2. **Install dependencies**
 ```bash
-   npm install
+npm install
 ```
 
 3. **Set up environment variables**
 ```bash
-   cp .env.example .env
+cp .env.example .env
 ```
    Fill in real values in `.env` (see [Environment Variables](#environment-variables) below).
 
 4. **Start the dev server**
 ```bash
-   npm run dev
+npm run dev
 ```
    Requires a running Postgresql instance.
 
