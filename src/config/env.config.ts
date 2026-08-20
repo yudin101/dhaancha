@@ -7,7 +7,6 @@ const envSchema = z.object({
   // Server Config
   FRONTEND_URL: z.url(),
   SERVER_PORT: z.coerce.number().int().positive(),
-  SERVER_URL: z.url(),
   DATABASE_URL: z.url(),
 });
 
