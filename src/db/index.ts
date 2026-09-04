@@ -10,10 +10,10 @@ export const checkDatabaseConnection = async () => {
   try {
     await pool.query("SELECT 1");
   } catch (err) {
-    console.error("Failed to connect to database:", err)
+    console.error("Failed to connect to database:", err);
     process.exit(1);
   }
-}
+};
 
 export const db = drizzle(pool);
 

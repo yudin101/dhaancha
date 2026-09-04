@@ -1,9 +1,11 @@
 # Dhaancha
 
 ## Overview
+
 An Express API Template
 
 ## Tech Stack
+
 - Express 5 - server framework
 - Drizzle ORM (Postgres) - database
 - Zod - schema validation
@@ -13,6 +15,7 @@ An Express API Template
 - Prettier & Oxlint - formatting/linting
 
 ## Project Structure
+
 ```
 src/
 ├── config/          # env validation, drizzle config, logging config
@@ -27,55 +30,66 @@ tests/               # vitest test suite
 ```
 
 ## Getting Started
+
 1. **Use this template** on GitHub, or clone directly:
+
 ```bash
 git clone https://github.com/yudin101/dhaancha.git
 cd dhaancha
 ```
+
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
 
 3. **Set up environment variables**
+
 ```bash
 cp .env.example .env
 ```
-   Fill in real values in `.env` (see [Environment Variables](#environment-variables) below).
+
+Fill in real values in `.env` (see [Environment Variables](#environment-variables) below).
 
 4. **Start the dev server**
+
 ```bash
 npm run dev
 ```
-   Requires a running Postgresql instance.
 
-   Server runs on the port set in `SERVER_PORT`. API docs at `/api/docs`.
+Requires a running Postgresql instance.
+
+Server runs on the port set in `SERVER_PORT`. API docs at `/api/docs`.
 
 ## Environment Variables
-| Variable      | Description                           | Example                           |
-|---------------|---------------------------------------|-----------------------------------|
-| FRONTEND_URL  | Used for CORS allowed-origin config   | https://example.com               |
-| SERVER_PORT   | Port the server listens on            | 3000                              |
-| DATABASE_URL  | Postgres connection string            | postgresql://user:pass@host/db    |
+
+| Variable     | Description                         | Example                        |
+| ------------ | ----------------------------------- | ------------------------------ |
+| FRONTEND_URL | Used for CORS allowed-origin config | https://example.com            |
+| SERVER_PORT  | Port the server listens on          | 3000                           |
+| DATABASE_URL | Postgres connection string          | postgresql://user:pass@host/db |
 
 ## Available Scripts
-| Script         | Description                           |
-|----------------|---------------------------------------|
-| dev            | Run with hot reload (tsx --watch)     |
-| lint           | Run `oxlint` linter                   |
-| format         | Format files with `prettier`          |
-| format:check   | Check file formatting with `prettier` |
-| build          | Compile TypeScript to dist/           |
-| start          | Run compiled build (production)       |
-| db:push        | Push schema directly (local dev)      |
-| db:generate    | Generate migration files              |
-| db:migrate     | Apply pending migrations              |
-| db:studio      | Open Drizzle Studio                   |
-| test           | Run tests once                        |
-| test:watch     | Run tests in watch mode               |
+
+| Script       | Description                           |
+| ------------ | ------------------------------------- |
+| dev          | Run with hot reload (tsx --watch)     |
+| lint         | Run `oxlint` linter                   |
+| format       | Format files with `prettier`          |
+| format:check | Check file formatting with `prettier` |
+| build        | Compile TypeScript to dist/           |
+| start        | Run compiled build (production)       |
+| db:push      | Push schema directly (local dev)      |
+| db:generate  | Generate migration files              |
+| db:migrate   | Apply pending migrations              |
+| db:studio    | Open Drizzle Studio                   |
+| test         | Run tests once                        |
+| test:watch   | Run tests in watch mode               |
 
 ## Design Decisions & Notes
-- **Module system:** ESM. TypeScript is configured with `moduleResolution: nodenext`, so relative imports need `.js` extensions even in `.ts` files. 
+
+- **Module system:** ESM. TypeScript is configured with `moduleResolution: nodenext`, so relative imports need `.js` extensions even in `.ts` files.
 
 - **Env validation:** All environment variables are validated at startup via Zod (`src/config/env.config.ts`). If a required var is missing or malformed, the app throws and exits immediately rather than failing later on first use.
 
