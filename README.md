@@ -10,6 +10,7 @@ An Express API Template
 - Vitest - testing
 - Winston - logging
 - Swagger UI - documentation
+- Prettier & Oxlint - formatting/linting
 
 ## Project Structure
 ```
@@ -61,6 +62,9 @@ npm run dev
 | Script         | Description                           |
 |----------------|---------------------------------------|
 | dev            | Run with hot reload (tsx --watch)     |
+| lint           | Run `oxlint` linter                   |
+| format         | Format files with `prettier`          |
+| format:check   | Check file formatting with `prettier` |
 | build          | Compile TypeScript to dist/           |
 | start          | Run compiled build (production)       |
 | db:push        | Push schema directly (local dev)      |
