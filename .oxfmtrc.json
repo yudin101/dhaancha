@@ -1,0 +1,4 @@
+{
+  "printWidth": 80,
+  "ignorePatterns": ["node_modules", "dist", "coverage", "drizzle"]
+}

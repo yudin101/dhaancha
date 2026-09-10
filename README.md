@@ -12,7 +12,7 @@ An Express API Template
 - Vitest - testing
 - Winston - logging
 - Swagger UI - documentation
-- Prettier & Oxlint - formatting/linting
+- Oxfmt & Oxlint - formatting/linting
 
 ## Project Structure
 
@@ -72,20 +72,20 @@ Server runs on the port set in `SERVER_PORT`. API docs at `/api/docs`.
 
 ## Available Scripts
 
-| Script       | Description                           |
-| ------------ | ------------------------------------- |
-| dev          | Run with hot reload (tsx --watch)     |
-| lint         | Run `oxlint` linter                   |
-| format       | Format files with `prettier`          |
-| format:check | Check file formatting with `prettier` |
-| build        | Compile TypeScript to dist/           |
-| start        | Run compiled build (production)       |
-| db:push      | Push schema directly (local dev)      |
-| db:generate  | Generate migration files              |
-| db:migrate   | Apply pending migrations              |
-| db:studio    | Open Drizzle Studio                   |
-| test         | Run tests once                        |
-| test:watch   | Run tests in watch mode               |
+| Script       | Description                        |
+| ------------ | ---------------------------------- |
+| dev          | Run with hot reload (tsx --watch)  |
+| lint         | Run `oxlint` linter                |
+| format       | Format files with `oxfmt`          |
+| format:check | Check file formatting with `oxfmt` |
+| build        | Compile TypeScript to dist/        |
+| start        | Run compiled build (production)    |
+| db:push      | Push schema directly (local dev)   |
+| db:generate  | Generate migration files           |
+| db:migrate   | Apply pending migrations           |
+| db:studio    | Open Drizzle Studio                |
+| test         | Run tests once                     |
+| test:watch   | Run tests in watch mode            |
 
 ## Design Decisions & Notes
 
