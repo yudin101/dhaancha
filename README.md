@@ -20,6 +20,7 @@ An Express API Template
 src/
 ├── config/          # env validation, drizzle config, logging config
 ├── controllers/     # request handlers
+├── services/        # service layer, DB communication
 ├── db/              # drizzle schema + client
 ├── middlewares/     # error handling, rate limiting, logging, validation
 ├── routes/          # route definitions
@@ -41,7 +42,7 @@ cd dhaancha
 2. **Install dependencies**
 
 ```bash
-npm install
+bun install
 ```
 
 3. **Set up environment variables**
@@ -55,7 +56,7 @@ Fill in real values in `.env` (see [Environment Variables](#environment-variable
 4. **Start the dev server**
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 Requires a running Postgresql instance.
