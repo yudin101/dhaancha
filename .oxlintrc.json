@@ -1,0 +1,97 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "import", "node"],
+  "env": {
+    "node": true,
+    "es2022": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "warn",
+    "style": "warn",
+    "pedantic": "off",
+    "restriction": "off",
+    "nursery": "off"
+  },
+  "rules": {
+    "no-console": "off",
+    "no-debugger": "error",
+    "no-unused-vars": "error",
+    "no-var": "error",
+    "new-cap": ["warn", { "capIsNewExceptions": ["Router"] }],
+    "prefer-const": "error",
+    "eqeqeq": "error",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "require-await": "warn",
+    "no-async-promise-executor": "error",
+    "no-process-exit": "warn",
+    "no-ternary": "off",
+    "no-magic-numbers": [
+      "warn",
+      {
+        "ignoreTypeIndexes": true,
+        "ignoreArrayIndexes": true,
+        "ignoreDefaultValues": true,
+        "ignore": [
+          0, 1, 2, 200, 201, 204, 300, 400, 401, 403, 404, 409, 422, 500
+        ]
+      }
+    ],
+    "sort-imports": "off",
+    "sort-keys": "off",
+    "one-var": "off",
+    "init-declarations": "off",
+    "capitalized-comments": "off",
+    "id-length": ["warn", { "exceptions": ["_"] }],
+    "max-statements": ["warn", 20],
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/await-thenable": "error",
+    "import/no-duplicates": "error",
+    "import/no-cycle": "warn",
+    "import/no-named-export": "off",
+    "import/exports-last": "off",
+    "import/group-exports": "off",
+    "import/consistent-type-specifier-style": "off",
+    "import/no-nodejs-modules": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/prefer-node-protocol": "warn",
+    "unicorn/filename-case": "off",
+    "unicorn/catch-error-name": "off",
+    "unicorn/max-nested-calls": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.spec.ts", "tests/**/*.ts"],
+      "rules": {
+        "id-length": "off",
+        "max-statements": "off",
+        "prefer-named-capture-group": "off",
+        "unicorn/consistent-function-scoping": "off",
+        "typescript/consistent-type-imports": "off",
+        "no-magic-numbers": "off"
+      }
+    },
+    {
+      "files": ["src/scripts/**/*.ts"],
+      "rules": {
+        "unicorn/no-process-exit": "off"
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "dist/**",
+    "build/**",
+    "node_modules/**",
+    "coverage/**",
+    "*.min.js"
+  ]
+}
