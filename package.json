@@ -30,8 +30,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "dev": "bun --watch src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "build": "bun build ./src/server.ts --outdir ./dist --target bun",
+    "start": "bun run dist/server.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
