@@ -1,6 +1,6 @@
-import express, { Application } from "express";
+import express, { type Application } from "express";
 import cookieParser from "cookie-parser";
-import { log } from "./middlewares/log.middleware.js";
+import log from "./middlewares/log.middleware.js";
 import { authRouter, generalRouter } from "./routes/index.js";
 import {
   globalErrorHandler,

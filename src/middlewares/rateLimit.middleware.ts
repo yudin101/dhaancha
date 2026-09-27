@@ -1,5 +1,6 @@
-import rateLimit from "express-rate-limit";
+import { rateLimit } from "express-rate-limit";
 
+// oxlint-disable eslint/no-magic-numbers
 // Send only 100 requests every 15 minutes
 export const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -23,3 +24,4 @@ export const authLimiter = rateLimit({
     code: "RATE_LIMITED",
   },
 });
+// oxlint-enable eslint/no-magic-numbers

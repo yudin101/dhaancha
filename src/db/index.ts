@@ -1,6 +1,7 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import env from "../config/env.config.js";
+import AppError from "../utils/appError.util.js";
 
 const pool = new Pool({
   connectionString: env.DATABASE_URL,
@@ -10,8 +11,12 @@ export const checkDatabaseConnection = async () => {
   try {
     await pool.query("SELECT 1");
   } catch (err) {
-    console.error("Failed to connect to database:", err);
-    process.exit(1);
+    console.error(err);
+    throw new AppError(
+      "Service temporarily unavailable",
+      "SERVICE_UNAVAILABLE",
+      503,
+    );
   }
 };
 

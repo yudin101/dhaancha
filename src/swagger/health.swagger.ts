@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { ZodOpenApiPathsObject } from "zod-openapi";
+import type { ZodOpenApiPathsObject } from "zod-openapi";
 
-export const healthDocs: ZodOpenApiPathsObject = {
+const healthDocs: ZodOpenApiPathsObject = {
   "/api/v1/health/check": {
     get: {
       summary: "Health Check",
@@ -23,3 +23,5 @@ export const healthDocs: ZodOpenApiPathsObject = {
     },
   },
 };
+
+export default healthDocs;

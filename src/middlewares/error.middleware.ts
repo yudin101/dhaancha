@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from "express";
-import { AppError } from "../utils/appError.util.js";
+import type { Request, Response, NextFunction } from "express";
+import AppError from "../utils/appError.util.js";
 
 // 404 Handler
 export const handle404 = (req: Request, res: Response) => {
@@ -9,10 +9,25 @@ export const handle404 = (req: Request, res: Response) => {
   });
 };
 
+export interface BodyParserError {
+  type?: string;
+  message?: string;
+  status?: number;
+}
+
+// Body Parser Error
+// For things like invalid JSON in request
+const isBodyParserError = (err: unknown): err is BodyParserError =>
+  typeof err === "object" &&
+  err !== null &&
+  "type" in err &&
+  typeof (err as { type: unknown }).type === "string";
+
 // Global Error Handler
 // Triggers if there occured any error that was not handled in the controllers
+// oxlint-disable-next-line eslint/max-params
 export const globalErrorHandler = (
-  error: any,
+  error: unknown,
   _req: Request,
   res: Response,
   _next: NextFunction,
@@ -23,7 +38,9 @@ export const globalErrorHandler = (
       code: error.code,
     });
   }
-  if (error.type === "entity.parse.failed") {
+
+  // Handling invalid JSON
+  if (isBodyParserError(error) && error.type === "entity.parse.failed") {
     return res.status(400).json({
       error: "Invalid JSON in request body",
       code: "INVALID_JSON_BODY",

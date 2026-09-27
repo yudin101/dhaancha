@@ -1,7 +1,7 @@
 import { Router } from "express";
 import healthRoutes from "./health.route.js";
 import swaggerUi from "swagger-ui-express";
-import { document } from "../swagger/index.js";
+import document from "../swagger/index.js";
 
 const authRouter = Router();
 

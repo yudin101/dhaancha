@@ -1,7 +1,7 @@
-import { createDocument, ZodOpenApiObject } from "zod-openapi";
-import { healthDocs } from "./health.swagger.js";
+import { createDocument, type ZodOpenApiObject } from "zod-openapi";
+import healthDocs from "./health.swagger.js";
 
-export const document = createDocument({
+const document = createDocument({
   openapi: "3.1.0",
   info: { title: "API", version: "1.0.0" },
   security: [{ bearerAuth: [] }],
@@ -18,3 +18,5 @@ export const document = createDocument({
     ...healthDocs,
   },
 }) as ZodOpenApiObject;
+
+export default document;

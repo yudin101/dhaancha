@@ -1,16 +1,14 @@
-import { Request, Response, NextFunction } from "express";
-import { auditLogger } from "../config/auditLogger.config.js";
+import type { Request, Response, NextFunction } from "express";
+import auditLogger from "../config/auditLogger.config.js";
 
 // In the current setup, "req.params.id" will automatically be logged
-export const logUserAction = (
-  actionDescription: string,
-  allowedKeys: string[] = [],
-) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+const logUserAction =
+  (actionDescription: string, allowedKeys: string[] = []) =>
+  (req: Request, res: Response, next: NextFunction) => {
     // Intercept response finish to ensure the action actually succeeded
     res.on("finish", () => {
       if (res.statusCode >= 200 && res.statusCode < 300) {
-        let fieldsToLog: Record<string, any> = {};
+        let fieldsToLog: Record<string, unknown> = {};
 
         // Check if allowedKeys has anything and req.body exists
         // Filter out the entries from req.body which allowedKeys has
@@ -43,4 +41,5 @@ export const logUserAction = (
     });
     next();
   };
-};
+
+export default logUserAction;

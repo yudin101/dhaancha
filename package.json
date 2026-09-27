@@ -10,12 +10,12 @@
   "bugs": {
     "url": "https://github.com/yudin101/dhaancha/issues"
   },
+  "license": "MIT",
+  "author": "yudin101",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/yudin101/dhaancha.git"
   },
-  "license": "MIT",
-  "author": "yudin101",
   "type": "module",
   "main": "dist/server.js",
   "scripts": {

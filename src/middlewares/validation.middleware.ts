@@ -1,21 +1,34 @@
-import { Request, Response, NextFunction } from "express";
-import { z, ZodError } from "zod";
+import type { Request, Response, NextFunction } from "express";
+import { type z, ZodError } from "zod";
+
+interface ParsedRequest {
+  body?: unknown;
+  query?: unknown;
+  params?: unknown;
+}
 
 // For validating Zod schemas
-export const validate = (schema: z.ZodTypeAny) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+const validate =
+  (schema: z.ZodTypeAny) =>
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       const parsed = (await schema.parseAsync({
         body: req.body,
         query: req.query,
         params: req.params,
-      })) as any;
+      })) as ParsedRequest;
 
-      if (parsed.query) Object.assign(req.query, parsed.query);
-      if (parsed.body) Object.assign(req.body, parsed.body);
-      if (parsed.params) Object.assign(req.params, parsed.params);
+      if (parsed.query) {
+        Object.assign(req.query, parsed.query);
+      }
+      if (parsed.body) {
+        Object.assign(req.body, parsed.body);
+      }
+      if (parsed.params) {
+        Object.assign(req.params, parsed.params);
+      }
 
-      next();
+      return next();
     } catch (error) {
       if (error instanceof ZodError) {
         return res.status(400).json({
@@ -26,7 +39,8 @@ export const validate = (schema: z.ZodTypeAny) => {
           code: "VALIDATION_ERROR",
         });
       }
-      next(error);
+      return next(error);
     }
   };
-};
+
+export default validate;
