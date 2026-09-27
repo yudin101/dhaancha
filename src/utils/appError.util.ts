@@ -3,7 +3,11 @@ class AppError extends Error {
   code: string;
   statusCode: number;
 
-  constructor(message: string, code: string, statusCode = 403) {
+  constructor(
+    message: string,
+    code = "INTERNAL_SERVER_ERROR",
+    statusCode = 500,
+  ) {
     super(message);
     this.code = code;
     this.statusCode = statusCode;
