@@ -5,7 +5,7 @@ import { authRouter, generalRouter } from "./routes/index.js";
 import {
   globalErrorHandler,
   handle404,
-} from "./middlewares/error.middleware.js";
+} from "./middlewares/errors/error.middleware.js";
 import {
   generalLimiter,
   authLimiter,

@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
-import AppError from "../utils/appError.util.js";
+import AppError from "../../utils/appError.util.js";
+import mapKnownError from "./index.js";
 
 // 404 Handler
 export const handle404 = (req: Request, res: Response) => {
@@ -9,22 +10,8 @@ export const handle404 = (req: Request, res: Response) => {
   });
 };
 
-export interface BodyParserError {
-  type?: string;
-  message?: string;
-  status?: number;
-}
-
-// Body Parser Error
-// For things like invalid JSON in request
-const isBodyParserError = (err: unknown): err is BodyParserError =>
-  typeof err === "object" &&
-  err !== null &&
-  "type" in err &&
-  typeof (err as { type: unknown }).type === "string";
-
 // Global Error Handler
-// Triggers if there occured any error that was not handled in the controllers
+// Triggers if there occurred any error that was not handled in the controllers
 // oxlint-disable-next-line eslint/max-params
 export const globalErrorHandler = (
   error: unknown,
@@ -39,14 +26,19 @@ export const globalErrorHandler = (
     });
   }
 
-  // Handling invalid JSON
-  if (isBodyParserError(error) && error.type === "entity.parse.failed") {
-    return res.status(400).json({
-      error: "Invalid JSON in request body",
-      code: "INVALID_JSON_BODY",
+  const mapped = mapKnownError(error);
+  if (mapped) {
+    if (mapped.status >= 500) {
+      console.error(error);
+    }
+
+    return res.status(mapped.status).json({
+      error: mapped.error,
+      code: mapped.code,
     });
   }
 
+  // For when we have no idea what happened
   console.error(error);
   res.status(500).json({
     error: "Internal Server Error",
