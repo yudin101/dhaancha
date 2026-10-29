@@ -17,6 +17,11 @@ export default defineConfig({
       reporter: ["text-summary", "html", "lcov"],
       thresholds: { statements: 85, branches: 80, functions: 80, lines: 85 },
     },
+    server: {
+      deps: {
+        inline: ["zod"],
+      },
+    },
     setupFiles: ["./tests/setup.ts"],
     include: ["tests/**/*.test.ts"],
   },
